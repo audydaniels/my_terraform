@@ -1,6 +1,6 @@
 resource "google_compute_instance" "host" { 
   name = "test-instance"
-  machine_type = "n1-stndard-1"
+  machine_type = "n1-standard-1"
   zone = "us-central1-a"
 
   boot_disk {
@@ -16,7 +16,7 @@ resource "google_compute_instance" "host" {
   }
   
   service_account {
-    scopes = ["userinfo-email", "computer-ro", "storage-ro" ]
+    scopes = ["userinfo-email", "compute-ro", "storage-ro" ]
   
   }
 }
