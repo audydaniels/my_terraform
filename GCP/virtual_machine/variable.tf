@@ -22,8 +22,8 @@ variable "machine_type" {
 }
 
  
-variable "machine_count" {
-  default 	= "1"
+variable "name_count" {
+  default 	= ["server1", "sever2", "server3"]
 }
 
 variable "enviornment" {
