@@ -37,8 +37,8 @@ resource "aws_resourcegroups_group" "test" {
   ],
   "TagFilters": [
     {
-      "Key": "Stage",
-      "Values": ["Test"]
+      "key": "enviornment",
+      "Values": ["prod"]
     }
   ]
 }
