@@ -30,7 +30,7 @@ resource "aws_resourcegroups_group" "test" {
   name = "test-group"
 
   resource_query {
-    query = file("query.json")
+    query = file("query3.json")
     
   }
 }

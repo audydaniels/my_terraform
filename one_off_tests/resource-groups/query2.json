@@ -4,8 +4,8 @@
   ],
   "TagFilters": [
     {
-      "Key": "enviornment",
-      "Values": ["prod"]
+      "Key": "Stage",
+      "Values": ["Test"]
     }
   ]
 }

@@ -6,6 +6,11 @@
     {
       "Key": "enviornment",
       "Values": ["prod"]
+    },            
+    {           
+      "key": "Application",
+      "Values":  ["batman"]
     }
   ]
 }
+ 
