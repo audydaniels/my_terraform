@@ -5,14 +5,24 @@ provider "aws" {
 
 
 
-#variable "app_name" {
-#  type = "map"
-#  default = {
-#    "mogo"	= "MongoDB"
-#  }
-#}
 
+variable "app_name" {
+  type = "map"
+  default = {
+    "mongo"  = "MongoDB"
+    "ump"    = "ump"
+    "arb"    = "arb"
+  }
+}
 
+variable "enviornment" {
+  type = "map"
+  default  = {
+    "dev"       = "test"
+    "devinit"   = "devint"
+    "prod"      = "production"
+  }
+}
 
 
 resource "aws_instance" "hosta" {
