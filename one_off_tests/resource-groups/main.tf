@@ -4,12 +4,12 @@ provider "aws" {
 }
 
 
-variable "app_name" {
-  type = "map"
-  default = {
-    "mogo"	= "MongoDB"
-  }
-}
+#variable "app_name" {
+#  type = "map"
+#  default = {
+#    "mogo"	= "MongoDB"
+#  }
+#}
 
 
 
