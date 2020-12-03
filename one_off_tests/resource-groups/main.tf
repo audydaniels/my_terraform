@@ -7,7 +7,18 @@ provider "aws" {
 variable "app_name" {
   type = "map"
   default = {
-    "mogo"	= "MongoDB"
+    "mongo"  = "MongoDB"
+    "ump"    = "ump"
+    "arb"    = "arb"
+  }
+}
+
+variable "enviornment" {
+  type = "map"
+  default  = {
+    "dev" 	= "test"
+    "devinit"   = "devint"
+    "prod"	= "production"
   }
 }
 
