@@ -26,24 +26,60 @@ variable "enviornment" {
 
 
 resource "aws_instance" "hosta" {
-  ami 	= "ami-0b0f4c27376f8aa79"
+  ami 		= "ami-0b0f4c27376f8aa79"
   instance_type = "t2.micro"
 
   tags = {
-    key	   = "Name"
-    Name   = "aa-2"
+    key	   	= "Name"
+    Name   	= "aa-2"
     enviornment	= "prod"
-    Application = "Mongo"
+    application = "Mongo"
   } 
 }
+
+resource "aws_instance" "hostb" {
+  ami 			= "ami-0b0f4c27376f8aa79"
+  instance_type 	= "t2.micro"
+
+  tags = {
+    key    	= "Name"
+    Name   	= "bb-2"
+    enviornment = "test"
+    application = "mongo"
+  }
+}
+
+resource "aws_instance" "hostc" {
+  ami 			= "ami-0b0f4c27376f8aa79"
+  instance_type        = "t2.micro"
+
+  tags = {
+    Key   	= "Name"
+    Name   	= "cc-2"
+    enviornment = "prod"
+    application = "mongoDB"
+  }
+
+}
+
 
 
 resource "aws_resourcegroups_group" "prod-mongo" {
   name = "prod-mango"
 
   resource_query {
-    query = file("query3.json")
+    query = file("prod-mongo.json")
     
   }
 }
+
+resource "aws_resourcegroups_group" "test-mongo" {
+  name = "test-mogo"
+
+  resource_query {
+    query = file("test-mongo.json")
+  }
+
+}
+
 

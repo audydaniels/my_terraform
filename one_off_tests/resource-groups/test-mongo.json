@@ -5,9 +5,9 @@
   "TagFilters": [
     {
       "Key": "enviornment",
-      "Values": ["prod*"]},
+      "Values": ["*test*"]},
     { "Key": "application",
-      "Values": ["var.app_name["dev"]"]
+      "Values": ["*mongo*"]
     }
   ]
 }
