@@ -7,7 +7,7 @@
       "Key": "enviornment",
       "Values": ["prod*"]},
     { "Key": "application",
-      "Values": ["Mongo*"]
+      "Values": ["var.app_name["dev"]"]
     }
   ]
 }
