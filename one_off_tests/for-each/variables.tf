@@ -37,12 +37,12 @@ variable "environment" {
 
 variable "listapp" {
   type = "list"
-  default = ["app1","app2","app3","app4","app5","app6"]
+  default = ["app1","app2"]
 }
 
 variable "listenv" {
   type = "list"
-  default = ["env1","env2","env3","env4"]
+  default = ["env1","env2","env3"]
 }
 
 

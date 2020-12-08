@@ -4,21 +4,15 @@ provider "aws" {
 }
 
 
-
-
-
-
-
-
-#resource "aws_resourcegroups_group" "test-mongo" {
-#   for_each = "${var.batman}"
-#     name = "each.value"
+resource "aws_resourcegroups_group" "resource-group" {
+   for_each = { for nk in local.what: nk.name_key => nk } 
+     name = each.key
   
   
-#  resource_query {
-#    query = file("test-mongo.json")
-#  }
-#}
+  resource_query {
+    query = file("test-mongo.json")
+  }
+}
 
 
 
