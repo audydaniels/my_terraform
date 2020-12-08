@@ -29,7 +29,7 @@ locals {
 }
 
 output "myvalue" {
-  value = value(test4.key)
+  value = value("${test4}")
 
 }
 
