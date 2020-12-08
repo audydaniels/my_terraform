@@ -1,3 +1,21 @@
+variable "manual_map" {
+  
+  default = [ 
+    {
+     env = "test"
+     app = "app1"
+    },
+    {
+     env = "prod"
+     app = "app2"
+    }
+  ] 
+}
+
+
+
+
+
 variable "application" {
   type = "map"
   default = {

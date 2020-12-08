@@ -3,17 +3,16 @@ provider "aws" {
   region = "us-east-2"
 }
 
-#locals {
-#  here = {
-#   for item in keys(var.environment):
-#   var.environment[item] => "${var.application[*]}"}
-#}
+
+
+
+
 
 
 
 #resource "aws_resourcegroups_group" "test-mongo" {
-#   for_each = "${local.here}"
-#     name = "*"
+#   for_each = "${var.batman}"
+#     name = "each.value"
   
   
 #  resource_query {
