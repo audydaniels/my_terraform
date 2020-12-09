@@ -1,0 +1,13 @@
+{
+  "ResourceTypeFilters": [
+    "AWS::EC2::Instance"
+  ],
+  "TagFilters": [
+    {
+      "Key": "enviornment",
+      "Values": ["test"]},
+    { "Key": "application",
+      "Values": ["mongo","mongodb","Mongo"]
+    }
+  ]
+}
