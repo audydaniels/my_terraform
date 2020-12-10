@@ -4,8 +4,6 @@ variable "listenv" {
     default = [
      "env1", 
      "env2",
-     "env3",
-     "env4"
     ]
 }
 
@@ -17,33 +15,35 @@ variable "listapp" {
     "app1", 
     "app2", 
     "app3", 
-    "app4" 
   ]
 }
 
 
 
 locals {
-  setformat = [
+  groupname = [
      for pair in setproduct("${var.listenv}", "${var.listapp}") : { 
-       env_key = pair[0]
-       app_key = pair[1]
        combinelist = join("-", [pair[0], pair[1]]) 
      }
   ]
+  filteroutenv = [
+    for value in setproduct("${var.listenv}", "${var.listapp}") : {
+      env_key = concat([value[0]])
+    }
+  ]
+ }
+
+variable "cat" {
+  default = "cat"  
 }
 
 
-
-
-
-
-
-output "dumpenv" {
-  value = "${local.setformat[0]}"}
+#output "dumpenv" {
+#  value = "${local.filterout}"
+#}
 
 #output "dumpapp" {
-#  value = "${var.listapp}"
+#  value = "${local.setformat}"
 #}
 
 

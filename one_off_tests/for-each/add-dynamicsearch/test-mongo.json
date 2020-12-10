@@ -5,7 +5,7 @@
   "TagFilters": [
     {
       "Key": "enviornment",
-      "Values": ["test"]},
+      "Values": "[var.listapp]"},
     { "Key": "application",
       "Values": ["mongo","mongodb","Mongo"]
     }
