@@ -24,23 +24,29 @@ locals {
   groupname = [
      for pair in setproduct("${var.listenv}", "${var.listapp}") : { 
        combinelist = join("-", [pair[0], pair[1]]) 
+       env_key     = pair[0]
      }
   ]
   filteroutenv = [
     for value in setproduct("${var.listenv}", "${var.listapp}") : {
-      env_key = concat([value[0]])
+      Values = jsonencode(value[0]) 
+
     }
   ]
  }
 
-variable "cat" {
-  default = "cat"  
+#variable "test" {
+#  default = local.filteroutenv  
+#}
+
+
+
+output "dumpenv" {
+#  value = "${format("%q", ["${local.groupname.env_key}"])}"
+   value = tostring(["${local.filteroutenv}"])
 }
 
 
-#output "dumpenv" {
-#  value = "${local.filterout}"
-#}
 
 #output "dumpapp" {
 #  value = "${local.setformat}"
