@@ -25,12 +25,12 @@ locals {
      for pair in setproduct("${var.listenv}", "${var.listapp}") : { 
        combinelist = join("-", [pair[0], pair[1]]) 
        env_key     = pair[0]
-       app_key     = pair[1] 
+       app_key     = pair[1]
      }
   ]
 #  filteroutenv = [
-#    for value in setproduct("${var.listenv}", "${var.listapp}") :[
-#      for value[0] in value[0] ]
+#    i for j, k in setproduct("${var.listenv}", "${var.listapp}") :[
+#      for j[0] in k [0] ]
 #  ]
  }
 
