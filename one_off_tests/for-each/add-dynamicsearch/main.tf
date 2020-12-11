@@ -7,7 +7,7 @@ provider "aws" {
 resource "aws_resourcegroups_group" "resource-group" {
    for_each =  { for value in local.groupname :  
       value.combinelist =>  value }
-     name = each.key
+      name = each.key
      
      
        resource_query {
@@ -20,7 +20,8 @@ resource "aws_resourcegroups_group" "resource-group" {
   "TagFilters": [
     {
       "Key": "enviornment",
-      "Values": ["${each.value.env_key}"]},
+      "Values": ["${each.value.env_key}"]
+    },
     { "Key": "application",
       "Values": ["${each.value.app_key}"]
     }

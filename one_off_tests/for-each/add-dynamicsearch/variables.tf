@@ -12,7 +12,7 @@ variable "listapp" {
   type = "list"
 
   default = [ 
-    "app1", 
+    "app1, App1", 
     "app2", 
     "app3", 
   ]
