@@ -1,8 +1,4 @@
 
-provider "aws" {
-  region = "us-east-2"
-}
-
 
 resource "aws_resourcegroups_group" "resource-group" {
    for_each =  { for value in local.groupname :  

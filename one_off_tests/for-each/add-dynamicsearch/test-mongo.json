@@ -5,9 +5,10 @@
   "TagFilters": [
     {
       "Key": "enviornment",
-      "Values": "[var.listapp]"},
+      "Values": ["${each.value.env_key}"]
+    },
     { "Key": "application",
-      "Values": ["mongo","mongodb","Mongo"]
+      "Values": ["${each.value.app_key}"]
     }
   ]
 }

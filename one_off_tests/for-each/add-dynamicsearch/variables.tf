@@ -2,23 +2,19 @@ variable "listenv" {
   type = "list"
 
     default = [
-     "dev", 
+     "devdint", 
      "prod",
+     "test",
     ]
 }
-
 
 variable "listapp" {
   type = "list"
 
-  default = [ 
-    "app1, App1", 
-    "app2", 
-    "app3", 
+  default = [
+    "adt-cell-bounce", 
   ]
 }
-
-
 
 locals {
   groupname = [
@@ -28,25 +24,5 @@ locals {
        app_key     = pair[1]
      }
   ]
-#  filteroutenv = [
-#    i for j, k in setproduct("${var.listenv}", "${var.listapp}") :[
-#      for j[0] in k [0] ]
-#  ]
- }
-
-output "test" {
-  value = "${local.groupname[*].env_key}"  
 }
-
-
-output "dumpenv" {
-#  value = "${format("%q", ["${local.groupname.env_key}"])}"
-   value = "${local.groupname[0].app_key}"
-}
-
-
-
-#output "dumpapp" {
-#  value = "${local.setformat}"
-#}
 
