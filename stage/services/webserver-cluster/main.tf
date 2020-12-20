@@ -68,12 +68,12 @@ data "terraform_remote_state" "db" {
     
 
 data "template_file" "user_data" {
-  template  = file("user-data.sh")
+  template  = "${file("user-data.sh")}"
 
   vars = {
     server_port 	= "${var.server_port}"
-    db_address 		= "{data.terraform_remote_state.db.address}"
-    db_port    		= "{data.terraform_remote_state.db.port}"
+    db_address 		= "${data.terraform_remote_state.db.outputs.db_ip}"
+    db_port    		= "${data.terraform_remote_state.db.outputs.db_port}"
   }
 }
 
