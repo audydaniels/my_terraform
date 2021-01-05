@@ -1,5 +1,5 @@
 resource "aws_security_group" "elb_sg" {
-  name		= "terraform-ELB-SG"
+  name		= "${var.cluster_name}-elb"
 
   ingress {
   from_port 	= 80
@@ -18,7 +18,7 @@ resource "aws_security_group" "elb_sg" {
 }
 
 resource "aws_security_group" "to_instance" {
-  name 	           = "Terraform-ELB-ASG"
+  name 	           = "${var.cluster_name}-to_instance"
  
   ingress {
   from_port	   = 0
@@ -37,7 +37,7 @@ resource "aws_security_group" "to_instance" {
 
 
 resource "aws_security_group" "instance" {
-  name 		= "terraform-example"
+  name 		= "${var.cluster_name}-instance"
 
   ingress {
   from_port   	= var.server_port

@@ -21,13 +21,13 @@ resource "aws_autoscaling_group" "example" {
   
   tag {
     key 		= "Name"
-    value 		= "terraform-asg-example"
+    value 		= "${var.cluster_name}-asg-example"
     propagate_at_launch = true
   }
 }
 
 resource "aws_elb" "example" {
-  name		     = "terraform-asg-example"
+  name		     = "${var.cluster_name}-elb-example"
   availability_zones = "${data.aws_availability_zones.all.names}"
   security_groups    = ["${aws_security_group.elb_sg.id}"]
   
@@ -53,15 +53,15 @@ data "terraform_remote_state" "db" {
   backend = "s3"
  
   config = {
-    bucket 		= "ajd-terraform-lab"
+    bucket 		= "${var.db_remote_state_bucket}"
     region 		= "us-east-2"
-    key 		= "terraform/stage/data-stores/mysql/terraform.tfstate"
+    key 		= "${var.db_remote_state_key}"
   }
 }
     
 
 data "template_file" "user_data" {
-  template  = "${file("user-data.sh")}"
+  template  = "${file("~/projects/gitTerraform/terraform_new/modules/services/webserver-cluster/user-data.sh")}"
 
   vars = {
     server_port 	= "${var.server_port}"

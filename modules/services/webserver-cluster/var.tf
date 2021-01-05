@@ -34,7 +34,7 @@ output "elb_dns_name" {
   value		= "${aws_elb.example.dns_name}" #This will output the DNS of the ELB
 }
 
-variable = "cluster_name" {
+variable "cluster_name" {
   description = "The name to use for all the cluster resources"
 }
 
