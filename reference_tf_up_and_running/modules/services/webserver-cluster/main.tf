@@ -49,19 +49,19 @@ resource "aws_elb" "example" {
 
 }
 
-data "terraform_remote_state" "db" {
-  backend = "s3"
+# data "terraform_remote_state" "db" {
+#   backend = "s3"
  
-  config = {
-    bucket 		= "${var.db_remote_state_bucket}"
-    region 		= "us-east-2"
-    key 		= "${var.db_remote_state_key}"
-  }
-}
+#   config = {
+#     bucket 		= "${var.db_remote_state_bucket}"
+#     region 		= "us-east-2"
+#     key 		= "${var.db_remote_state_key}"
+#   }
+# }
     
 
 data "template_file" "user_data" {
-  template  = "${file("~/projects/gitTerraform/terraform_new/modules/services/webserver-cluster/user-data.sh")}"
+  template  = "${file("~/Documents/repo/my_terraform/tf_up_and_running/modules/services/webserver-cluster/user-data.sh")}"
 
   vars = {
     server_port 	= "${var.server_port}"
