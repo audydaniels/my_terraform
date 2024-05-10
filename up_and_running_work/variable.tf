@@ -4,6 +4,11 @@ variable "server_port" {
 }
 
 
+
 variable "vpc3_subnets" {
-  type = map(string)
+type = map(object({
+    availability_zone   = string
+    cidr_block  = string
+}))
+  
 }

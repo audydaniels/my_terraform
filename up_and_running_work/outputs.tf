@@ -1,17 +1,13 @@
-output "subnets-values" {
-  #value = [ for range in aws_subnet.vpc3_subnets[each.key].cidr_block : range] 
-  value = values(aws_subnet.vpc3_subnets)[*].cidr_block
+
+
+
+
+output "public_ip" {
+    value       = [ for k, v in aws_subnet.subnets :  aws_subnet.subnets[k].id] 
+    #value = [values(aws_subnet.subnets)[*].cidr_block]
+
+  description = "The public IP address of the web server"
 }
-
-output "subnet_names" {
-  value = keys(aws_subnet.vpc3_subnets)[*]
-}
-
-
-# output "public_ip" {
-#   value       = aws_instance.test.public_ip
-#   description = "The public IP address of the web server"
-# }
 
 # output "ilb_public" {
 #     value = aws_lb.example.ip_address
@@ -19,12 +15,15 @@ output "subnet_names" {
 
 # }
 
-# output "ilb_dns" {
-#   value       = aws_lb.example.dns_name
-#   description = "The DNS name of LB"
+output "ilb_dns" {
+  value       = aws_lb.example.dns_name
+  description = "The DNS name of LB"
 
 
-# }
+}
+
+
+# {for <KEY>, <VALUE> in <MAP> : <OUTPUT_KEY> => <OUTPUT_VALUE>}
 
 
 
