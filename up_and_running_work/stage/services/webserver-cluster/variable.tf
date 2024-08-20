@@ -1,6 +1,6 @@
 variable "server_port" {
   description = "inbound web server port"
-  type        = number
+  type        = string
 }
 
 
@@ -12,3 +12,5 @@ type = map(object({
 }))
   
 }
+
+

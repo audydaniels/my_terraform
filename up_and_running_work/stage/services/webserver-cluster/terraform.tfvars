@@ -37,4 +37,3 @@ vpc3_subnets = {
     
 }
 
-

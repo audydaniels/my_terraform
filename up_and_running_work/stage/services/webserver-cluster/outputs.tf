@@ -2,7 +2,7 @@
 
 
 
-output "public_ip" {
+output "subnets" {
     value       = [ for k, v in aws_subnet.subnets :  aws_subnet.subnets[k].id] 
     #value = [values(aws_subnet.subnets)[*].cidr_block]
 
@@ -15,7 +15,7 @@ output "public_ip" {
 
 # }
 
-output "ilb_dns" {
+output "LoadBalancer_dns" {
   value       = aws_lb.example.dns_name
   description = "The DNS name of LB"
 
@@ -27,4 +27,16 @@ output "ilb_dns" {
 
 
 
+
+
+
+# output "db_address" {
+#   value = "${data.terraform_remote_state.db.outputs.address}"
+#   description = "value"
+# }
+
+
+# output "db_port" {
+#   value = "${data.terraform_remote_state.db.outputs.port}"
+# }
 
