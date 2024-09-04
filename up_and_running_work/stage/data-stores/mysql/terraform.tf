@@ -12,12 +12,28 @@ terraform {
   
 }
 
-data "terraform_remote_state" "vpc_subnet_ids" {
-  backend = "s3"
+# data "terraform_remote_state" "vpc_subnet_ids" {
+#   backend = "s3"
   
-  config = {
-    bucket = "ajd-up-and-running-state"
-    key = "global/s3/terraform.tfstate"
-    region = "us-east-2"
-  }
+#   config = {
+#     bucket = "ajd-up-and-running-state"
+#     key = "global/s3/terraform.tfstate"
+#     region = "us-east-2"
+#   }
+# }
+
+
+
+
+data "terraform_remote_state" "vpc" {
+    backend = "s3"
+    
+    config = {
+        bucket  = "ajd-up-and-running-state"
+        key = "global/vpc/terraform.tfstate"
+        region = "us-east-2"    
+    }
+
+    
+  
 }

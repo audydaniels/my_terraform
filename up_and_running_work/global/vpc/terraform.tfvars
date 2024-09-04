@@ -19,3 +19,7 @@ vpc_subnets = {
 }
 
 
+server_port = "8080"
+alb_port = "80"
+
+my_public_ip = "108.90.7.137/32"

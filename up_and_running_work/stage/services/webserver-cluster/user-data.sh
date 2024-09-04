@@ -6,7 +6,7 @@ cat > index.html <<EOF
 <p>DB port: "${db_port}"</p>
 EOF
 
-nohup busybox httpd -f -p server_port &
+nohup busybox httpd -f -p ${server_port} &
 
 
 

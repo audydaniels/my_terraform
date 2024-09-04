@@ -1,10 +1,15 @@
+#data.terraform_remote_state.vpc.outputs.x
+
 
 resource "aws_lb" "example" {
   name = "terraform-asg-example"
   load_balancer_type = "application"
-  #internal        = false
-  subnets         = [for k, v in aws_subnet.subnets : aws_subnet.subnets[k].id]
-  security_groups = [aws_security_group.alb.id]
+  subnets         = flatten(data.terraform_remote_state.vpc.outputs.subnets_ids)
+  security_groups = [data.terraform_remote_state.vpc.outputs.alb_acl]
+  
+  tags = {
+    "Name" = "TFU_ALB "
+  }
 
 }
 
@@ -33,7 +38,7 @@ resource "aws_lb_target_group" "asg" {
   name     = "terraform-asg-example"
   port     = var.server_port
   protocol = "HTTP"
-  vpc_id   = aws_vpc.vpc3.id
+  vpc_id   = data.terraform_remote_state.vpc.outputs.vpc_id
 
 
   health_check {

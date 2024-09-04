@@ -21,3 +21,17 @@ data "terraform_remote_state" "db" {
     region  = "us-east-2"
   }
 }
+
+
+
+data "terraform_remote_state" "vpc" {
+  backend = "s3"
+  
+  config = {
+    bucket = "ajd-up-and-running-state"
+    key = "global/vpc/terraform.tfstate"
+    region = "us-east-2"
+  }
+  
+}
+
