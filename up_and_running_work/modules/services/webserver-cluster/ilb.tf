@@ -2,13 +2,13 @@
 
 
 resource "aws_lb" "example" {
-  name = "terraform-asg-example"
+  name               = var.cluster_name
   load_balancer_type = "application"
-  subnets         = flatten(data.terraform_remote_state.vpc.outputs.subnets_ids)
-  security_groups = [data.terraform_remote_state.vpc.outputs.alb_acl]
-  
+  subnets            = flatten(var.subnets_ids)
+  security_groups    = [var.alb_acl]
+
   tags = {
-    "Name" = "TFU_ALB "
+    "Name" = "${var.tag_header}-${var.cluster_name}"
   }
 
 }
@@ -16,7 +16,7 @@ resource "aws_lb" "example" {
 
 resource "aws_lb_listener" "http" {
   load_balancer_arn = aws_lb.example.arn
-  port              = 80
+  port              = var.alb_port
   protocol          = "HTTP"
 
   default_action {
@@ -35,10 +35,10 @@ resource "aws_lb_listener" "http" {
 }
 
 resource "aws_lb_target_group" "asg" {
-  name     = "terraform-asg-example"
+  name     = var.cluster_name
   port     = var.server_port
   protocol = "HTTP"
-  vpc_id   = data.terraform_remote_state.vpc.outputs.vpc_id
+  vpc_id   = var.vpc_id
 
 
   health_check {

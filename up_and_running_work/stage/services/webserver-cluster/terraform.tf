@@ -1,24 +1,10 @@
-terraform {
-  backend "s3" {
-    bucket = "ajd-up-and-running-state"
-    key = "global/s3/terraform.tfstate"
-    region = "us-east-2"
-    
-    dynamodb_table = "terraform-up-and-running-locks"
-    encrypt = true
-    
-  }
-  
-
-}
-
 data "terraform_remote_state" "db" {
   backend = "s3"
 
   config = {
     bucket = "ajd-up-and-running-state"
-    key = "stage/data-stores/mysql/terraform.tfstate"
-    region  = "us-east-2"
+    key    = "stage/data-stores/mysql/terraform.tfstate"
+    region = "us-east-2"
   }
 }
 
@@ -26,12 +12,11 @@ data "terraform_remote_state" "db" {
 
 data "terraform_remote_state" "vpc" {
   backend = "s3"
-  
+
   config = {
     bucket = "ajd-up-and-running-state"
-    key = "global/vpc/terraform.tfstate"
+    key    = "global/vpc/terraform.tfstate"
     region = "us-east-2"
   }
-  
-}
 
+}
