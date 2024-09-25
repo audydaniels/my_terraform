@@ -1,14 +1,12 @@
-#data.terraform_remote_state.vpc.outputs.x
-
 
 resource "aws_lb" "example" {
-  name               = var.cluster_name
+  name               = "${var.env}-${var.cluster_name}"
   load_balancer_type = "application"
   subnets            = flatten(var.subnets_ids)
   security_groups    = [var.alb_acl]
 
   tags = {
-    "Name" = "${var.tag_header}-${var.cluster_name}"
+    "Name" = "${var.env}-${var.tag_header}-${var.cluster_name}"
   }
 
 }
@@ -35,7 +33,7 @@ resource "aws_lb_listener" "http" {
 }
 
 resource "aws_lb_target_group" "asg" {
-  name     = var.cluster_name
+  name     = "${var.env}-${var.cluster_name}"
   port     = var.server_port
   protocol = "HTTP"
   vpc_id   = var.vpc_id

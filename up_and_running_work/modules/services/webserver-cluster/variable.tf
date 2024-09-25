@@ -1,87 +1,92 @@
-variable "alb_port" {
-  description = "inbound port for the ALB "
-  type        = string
-}
-
-variable "server_port" {
-  description = "bakend host port for healthceck"
-  type        = string
-}
 
 
 
 variable "cluster_name" {
   description = "The name to use for all the cluster resources"
-  type = string
+  type        = string
 }
 
-variable "db_remote_state_bucket" {
-  description = "The name of the S3 bucket for the database's remote state"
-  type = string
-  
-}
+variable "server_port" {
+  description = "The port used to talkt to the instances behind the load balancer"
+  type        = string
 
-
-variable "db_remote_state_key" {
-  description = "The name of the S3 bucket for the database's remote state"
-  type = string
-  
 }
 
 
-variable "vpc_remote_state_bucket" {
-  description = "The name of the vpc bucket for the database's remote state"
-  type = string
-  
+variable "alb_port" {
+  description = "The port allowed inbound to the front end of the loadbalancer"
+  type        = string
+
+}
+
+variable "alb_acl" {
+  description = "The port allowed inbound to the front end of the loadbalancer"
+  type        = string
+
+}
+
+variable "instance_acl" {
+  description = "example host acl"
+  type        = string
+
 }
 
 
-variable "vpc_remote_state_key" {
-  description = "The name of the vpc bucket for the database's remote state"
-  type = string
-  
+variable "env" {
+  description = "environment"
+  type        = string
+
 }
-
-
-
 
 variable "tag_header" {
   description = "add to all tags"
-  type = string
-  
+  type        = string
+
 }
 
 variable "db_address" {
   description = "address for the mysql database"
-  type = string
-  
+  type        = string
+
 }
 
 variable "db_port" {
   description = "address for the mysql database"
-  type = string
-  
-}
-
-variable "instance_acl" {
-  description = "acl used for backend instances "
-  type = string
+  type        = string
 
 }
+
 
 variable "subnets_ids" {
   description = "list of subnet id's"
-  type = list
+  type        = list(any)
 }
 
-variable "alb_acl" {
-  description = "ALB acl for inbound access"
-  type = string
-  
-}
 
 variable "vpc_id" {
   description = "VPC ID "
-  type = string
-  
+  type        = string
+
 }
+
+
+variable "instance_type" {
+  description = "The type of EC2 Instance to run ex t2.micro"
+  type        = string
+
+
+}
+
+variable "min_size" {
+  description = "The minimum number of EC2 instances in ASG"
+  type        = string
+
+
+}
+
+variable "max_size" {
+  description = "The maximum number of EC2 insances in ASG"
+  type        = string
+
+}
+

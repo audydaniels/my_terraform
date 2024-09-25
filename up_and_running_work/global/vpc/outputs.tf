@@ -11,15 +11,15 @@ output "subnets_azs" {
 }
 
 
-output "alb_acl" {
-    value = aws_security_group.alb.id
+# output "alb_acl" {
+#     value = aws_security_group.alb.id
   
-}
+# }
 
-output "instance_acl" {
-    value = aws_security_group.instance.id
+# output "instance_acl" {
+#     value = aws_security_group.instance.id
   
-}
+# }
 
 
 output "vpc_id" {

@@ -4,11 +4,9 @@ variable "db_password" {
   
 }
 
-
-variable "env" {
-    description = "prefix for environment name"
-    type = string
-    
+variable "remote_state_bucket" {
+  description = "The name of the vpc bucket for the database's remote state"
+  type = string
   
 }
 
@@ -18,9 +16,7 @@ variable "vpc_remote_state_key" {
   
 }
 
-
-variable "remote_state_bucket" {
-  description = "The name of the vpc bucket for the database's remote state"
-  type = string
-  
+variable "env" {
+    description = "The enviornment resource is being built for"
+    type = string
 }

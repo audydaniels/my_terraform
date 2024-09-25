@@ -48,24 +48,16 @@ variable "vpc_remote_state_key" {
   
 }
 
-
 variable "instance_type" {
   description = "The type of EC2 Instance to run ex t2.micro"
-  type = string
-  
   
 }
 
 variable "min_size" {
   description = "The minimum number of EC2 instances in ASG"
-  type = string
-
   
 }
 
 variable "max_size" {
   description = "The maximum number of EC2 insances in ASG"
-  type = string
-
 }
-
